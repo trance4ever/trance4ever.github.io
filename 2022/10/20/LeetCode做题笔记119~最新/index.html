@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Category: MarkDown | Hexo</title>
+  <title>LeetCode做题笔记119~最新 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/categories/MarkDown/index.html">
+  <meta name="description" content="记录做题过程中的想法、思路，以及更优解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode做题笔记119~最新">
+<meta property="og:url" content="http://example.com/2022/10/20/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录做题过程中的想法、思路，以及更优解">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif">
+<meta property="article:published_time" content="2022-10-20T13:51:30.288Z">
+<meta property="article:modified_time" content="2022-10-20T13:49:42.000Z">
 <meta property="article:author" content="Trance4ever">
+<meta property="article:tag" content="Cpp">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -162,71 +169,214 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode做题笔记119~最新" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2022-05-12T08:28:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">MarkDown文件编写规则</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode做题笔记119~最新
     </h1>
   
-
-        <div class="article-info info-on-right">
+  
+        
+        <a href="/2022/10/20/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/" class="archive-article-date">
+  	<time datetime="2022-10-20T13:51:30.288Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
           
+            <p>记录做题过程中的想法、思路，以及更优解</p>
+<span id="more"></span>
+
+<h1 id="1、数组操作"><a href="#1、数组操作" class="headerlink" title="1、数组操作"></a>1、数组操作</h1><h2 id="1-1-杨辉三角Ⅱ-简单-119"><a href="#1-1-杨辉三角Ⅱ-简单-119" class="headerlink" title="1.1 杨辉三角Ⅱ[简单][119]"></a>1.1 杨辉三角Ⅱ[简单][119]</h2><p><strong>题目说明：</strong>给定一个非负索引 <code>rowIndex</code>，返回「杨辉三角」的第 <code>rowIndex</code> 行。<br>在「杨辉三角」中，每个数是它左上方和右上方的数的和。<br><img src="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" alt="图片">   </p>
+<p><strong>（暴力解法）解法一：</strong>使用两个数组完成本题，<code>pre</code>表示上一个数组，<code>cur</code>表示当前生成数组，<code>pre</code>初始为<code>&#123;1&#125;</code>，由此我们从杨辉三角第二行还是生成。每一行除了第一个和最后一个元素，都能找到其左上角和右上角的元素，具体为<code>cur[i]</code>的左上角元素为<code>pre[i - 1]</code>，右上角元素为<code>pre[i]</code>。之后两数相加得到数值，由此生成<code>cur</code>。生成完后更新<code>pre = cur</code>，重复上述过程直到生成了<code>rowindex</code>行为止。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; getRow(int rowIndex) &#123;</span><br><span class="line">        vector&lt;int&gt; pre = &#123;1&#125;;</span><br><span class="line">        if(rowIndex == 0) return pre;</span><br><span class="line">        vector&lt;int&gt; result;</span><br><span class="line">        for(int i = 1;i &lt;= rowIndex;i++) &#123;</span><br><span class="line">            vector&lt;int&gt; cur(i + 1);</span><br><span class="line">            for(int j = 1;j &lt;= i + 1;j++) &#123;</span><br><span class="line">                int leftup = (j &gt; 1) ? pre[j - 2] : 0;</span><br><span class="line">                int rightup = (j &lt; i + 1) ? pre[j - 1] : 0;</span><br><span class="line">                cur[j - 1] = leftup + rightup;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = cur;</span><br><span class="line">            if(i == rowIndex) result = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-三角形最小路径和-中等-120"><a href="#1-2-三角形最小路径和-中等-120" class="headerlink" title="1.2 三角形最小路径和[中等][120]"></a>1.2 三角形最小路径和[中等][120]</h2><p><strong>题目说明：</strong>给定一个三角形 <code>triangle</code> ，找出自顶向下的最小路径和。<br>每一步只能移动到下一行中相邻的结点上。<strong>相邻的结点</strong> 在这里指的是 <strong>下标</strong> 与 <strong>上一层结点下标</strong> 相同或者等于 <strong>上一层结点下标 + 1</strong> 的两个结点。也就是说，如果正位于当前行的下标 <code>i</code> ，那么下一步可以移动到下一行的下标 <code>i</code> 或 <code>i + 1</code> 。  </p>
+<p><strong>（动态规划）解法一：</strong>本题用动态规划比较容易解决，我们直接修改数组<code>triangle</code>，定义<code>triangle[i][j]</code>表示从三角形顶端到下标<code>(i,j)</code>位置的最小路径和。易知三角形第一个元素不用修改，考虑<code>triangle[i][j]</code>,到达<code>(i,j)</code>位置的可能是其左上方，也有可能是其右上方，故定义<code>cur</code>为其右上方最小路径和为<code>triangle[i - 1][j]</code>，定义其左上方元素为<code>pre</code>为<code>triangle[i - 1][j - 1]</code>,<code>triangle</code>与<code>pre</code>与<code>cur</code>的更小者相加，最终得到到达<code>(i,j)</code>的最小路径和。当左&#x2F;右上角元素不存在时，定义它为<code>INT_MAX</code>。更新<code>triangle</code>数组后，遍历最后一行元素并返回最小值即可。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">        int minimum = INT_MAX,n = triangle.size();</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            for(int j = 0;j &lt; i + 1;j++) &#123;</span><br><span class="line">                int cur = (j &lt; i) ? triangle[i - 1][j] : INT_MAX;</span><br><span class="line">                int pre = (j &gt; 0) ? triangle[i - 1][j - 1] : INT_MAX;</span><br><span class="line">                triangle[i][j] += min(cur,pre);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j = 0;j &lt; n;j++) &#123;</span><br><span class="line">            if(triangle[n - 1][j] &lt; minimum) &#123;</span><br><span class="line">                minimum = triangle[n - 1][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return minimum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-买卖股票最佳时机-简单-121"><a href="#1-3-买卖股票最佳时机-简单-121" class="headerlink" title="1.3 买卖股票最佳时机[简单][121]"></a>1.3 买卖股票最佳时机[简单][121]</h2><p><strong>题目说明：</strong>给定一个数组 <code>prices</code> ，它的第 <code>i</code> 个元素 <code>prices[i]</code> 表示一支给定股票第 <code>i</code> 天的价格。<br>你只能选择 <code>某一天</code> 买入这只股票，并选择在 <code>未来的某一个不同的日子</code> 卖出该股票。设计一个算法来计算你所能获取的最大利润。<br>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 <code>0</code> 。  </p>
+<p><strong>解法一：</strong>一次遍历可以解决该问题，定义<code>MAX</code>维护当前遍历天数可获得最大利润。定义<code>temp_min</code>维护当前遍历天数以前的最低股票价格，遍历<code>prices[i]</code>时，<code>MAX</code>取<code>MAX</code>与<code>prices[i] - temp_min</code>的最大值。这样<code>MAX</code>的值即为遍历到<code>prices[i]</code>为止能够获得的最大利润。遍历完数组之后返回<code>MAX</code>即可。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int temp_min = INT_MAX,MAX = 0,n = prices.size();</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            temp_min = min(temp_min,prices[i - 1]);</span><br><span class="line">            MAX = max(MAX,prices[i] - temp_min);     </span><br><span class="line">        &#125;</span><br><span class="line">        return MAX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-买卖股票的最佳时机Ⅱ-中等-122"><a href="#1-4-买卖股票的最佳时机Ⅱ-中等-122" class="headerlink" title="1.4 买卖股票的最佳时机Ⅱ[中等][122]"></a>1.4 买卖股票的最佳时机Ⅱ[中等][122]</h2><p><strong>题目说明：</strong>给你一个整数数组 <code>prices</code> ，其中 <code>prices[i]</code> 表示某支股票第 <code>i</code> 天的价格。<br>在每一天，你可以决定是否购买和&#x2F;或出售股票。你在任何时候 <code>最多</code> 只能持有 <code>一股</code> 股票。你也可以先购买，然后在 <code>同一天</code> 出售。<br>返回 你能获得的 <strong>最大</strong> 利润 。  </p>
+<p><strong>（LeetCode官方解法一）（动态规划）解法一：</strong>定义<code>dp[i][0]</code>表示第<code>i</code>天不持有股票时的最大利润，<code>dp[i][1]</code>表示第<code>i</code>天持有股票时的最大利润。<code>dp[i][1]</code>可第<code>i - 1</code>天不持有股票，第<code>i</code>天买股票，或者第<code>i - 1</code>已持有股票的状态到达，同理，<code>dp[i][0]</code>可由第<code>i - 1</code>天购买股票，第<code>i</code>天卖出股票，或者第<code>i</code>天不持有股票到达。具体要分别取他们两种状态利润的最大值。故有：  </p>
+<ol>
+<li>dp[i][0] &#x3D; max(dp[i - 1][1] + prices[i],dp[i - 1][0]);  </li>
+<li>dp[i][1] &#x3D; max(dp[i - 1][0] - prices[i],dp[i - 1][1]);</li>
+</ol>
+<p>对于初始化，有<code>dp[0][0] = 0</code>,<code>dp[0][1] = -prices[0]</code>。根据上述递推公式，求得的最后一天不持有股票的利润，即为目标答案。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int n = prices.size();</span><br><span class="line">        int dp[n][2];</span><br><span class="line">        dp[0][0] = 0;</span><br><span class="line">        dp[0][1] = -prices[0];</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            dp[i][0] = max(dp[i - 1][1] + prices[i],dp[i - 1][0]);</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        return dp[n - 1][0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+<p><strong>（LeetCode解法二）（贪心算法）解法二：</strong>定义<code>(i,j)</code>为第<code>i</code>天买入，第<code>j</code>天卖出的区间，则本题即求若干<code>(i,j)</code>区间产生最大利润之和，定义<code>max(i,j)</code>为该区间最大利润。可以证明<code>max(i,j)</code>等同于把<code>(i,j)</code>分为<code>j - i</code>个长度为<code>1</code>的区间，每个区间求最大利润。故本题可以分割为求<code>n - 1</code>个区间，并求其最大利润。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int n = prices.size(),MAX = 0;</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            MAX = max(MAX,MAX + prices[i] - prices[i - 1]);</span><br><span class="line">        &#125;</span><br><span class="line">        return MAX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-最长连续序列-中等-128"><a href="#1-5-最长连续序列-中等-128" class="headerlink" title="1.5 最长连续序列[中等][128]"></a>1.5 最长连续序列[中等][128]</h2><p><strong>题目说明：</strong>给定一个未排序的整数数组 <code>nums</code> ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。<br>请你设计并实现时间复杂度为 <code>O(n)</code> 的算法解决此问题。  </p>
+<p><strong>（哈希表）解法一：</strong>题目明确提出<code>O(n)</code>级时间复杂度，所以暴力解法就不适用了，考虑使用哈希表。  </p>
+<h1 id="2、链表操作"><a href="#2、链表操作" class="headerlink" title="2、链表操作"></a>2、链表操作</h1><h1 id="3、字符串操作"><a href="#3、字符串操作" class="headerlink" title="3、字符串操作"></a>3、字符串操作</h1><h2 id="3-1-验证回文串-简单-125"><a href="#3-1-验证回文串-简单-125" class="headerlink" title="3.1 验证回文串[简单][125]"></a>3.1 验证回文串[简单][125]</h2><p><strong>题目说明：</strong>如果在将所有大写字符转换为小写字符、并移除所有非字母数字字符之后，短语正着读和反着读都一样。则可以认为该短语是一个 <strong>回文串</strong> 。<br>字母和数字都属于字母数字字符。<br>给你一个字符串 <code>s</code>，如果它是 <strong>回文串</strong> ，返回 <code>true</code> ；否则，返回 <code>false</code> 。   </p>
+<p><strong>解法一：</strong>本题使用几个库函数可以很容易解决，<code>isalnum(c)</code>判断<code>c</code>是否为字母或数字类字符，若是返回<code>true</code>,否则返回<code>false</code>。<code>tolower(c)</code>函数，如果<code>c</code>为数字，<code>c</code>不该边，如果<code>c</code>为字母，将其转化为小写字母。有了如上函数，我们使用双指针，初始指向字符串两端，分别按照各自顺序找第一个数字或字母类字符，然后比较他们是否相等，如果相等，左右指针移动一个位置，然后重复上述过程，如不相等，返回<code>false</code>，如果遍历完成，返回<code>true</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(string s) &#123;</span><br><span class="line">        int n = s.size();</span><br><span class="line">        int left = 0,right = n - 1;</span><br><span class="line">        while(left &lt; right) &#123;</span><br><span class="line">            while(left &lt; right &amp;&amp; !isalnum(s[left])) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            while(left &lt; right &amp;&amp; !isalnum(s[right])) &#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            if(tolower(s[left]) != tolower(s[right])) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
+
+<h1 id="4、数值操作"><a href="#4、数值操作" class="headerlink" title="4、数值操作"></a>4、数值操作</h1><h1 id="5、二叉树"><a href="#5、二叉树" class="headerlink" title="5、二叉树"></a>5、二叉树</h1>
+          
+        
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Cpp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MarkDown//" class="article-tag-list-link color4">MarkDown</a>
+        			<a href="/categories/LeetCode//" class="article-tag-list-link color4">LeetCode</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/022/10/20/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2022/09/15/%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">后续学习计划</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1、数组操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E2%85%A1-%E7%AE%80%E5%8D%95-119"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 杨辉三角Ⅱ[简单][119]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C-%E4%B8%AD%E7%AD%89-120"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 三角形最小路径和[中等][120]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-%E7%AE%80%E5%8D%95-121"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 买卖股票最佳时机[简单][121]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E2%85%A1-%E4%B8%AD%E7%AD%89-122"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 买卖股票的最佳时机Ⅱ[中等][122]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97-%E4%B8%AD%E7%AD%89-128"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 最长连续序列[中等][128]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">2、链表操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">3、字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2-%E7%AE%80%E5%8D%95-125"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 验证回文串[简单][125]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E6%95%B0%E5%80%BC%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">4、数值操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">5.</span> <span class="toc-text">5、二叉树</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+ 
+
+
+
+
+
 
 
           </div>
@@ -254,10 +404,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
