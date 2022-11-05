@@ -6,23 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>LeetCode做题笔记119~最新 | Hexo</title>
+  <title>Archives: 2022/11 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录做题过程中的想法、思路，以及更优解">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode做题笔记119~最新">
-<meta property="og:url" content="http://example.com/2022/10/20/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2022/11/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="记录做题过程中的想法、思路，以及更优解">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif">
-<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg">
-<meta property="article:published_time" content="2022-10-20T13:50:26.600Z">
-<meta property="article:modified_time" content="2022-10-21T07:48:52.000Z">
 <meta property="article:author" content="Trance4ever">
-<meta property="article:tag" content="Cpp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -170,111 +162,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode做题笔记119~最新" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      LeetCode做题笔记119~最新
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/11/05/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/" class="archive-article-date">
+  	<time datetime="2022-11-05T07:15:20.161Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-05</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/11/05/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/">LeetCode做题笔记119~最新</a>
     </h1>
   
-  
-        
-        <a href="/2022/10/20/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/" class="archive-article-date">
-  	<time datetime="2022-10-20T13:50:26.600Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
+
+        <div class="article-info info-on-right">
           
-            <p>记录做题过程中的想法、思路，以及更优解</p>
-<span id="more"></span>
-
-<h1 id="1、数组操作"><a href="#1、数组操作" class="headerlink" title="1、数组操作"></a>1、数组操作</h1><h2 id="1-1-杨辉三角Ⅱ-简单-119"><a href="#1-1-杨辉三角Ⅱ-简单-119" class="headerlink" title="1.1 杨辉三角Ⅱ[简单][119]"></a>1.1 杨辉三角Ⅱ[简单][119]</h2><p><strong>题目说明：</strong>给定一个非负索引 <code>rowIndex</code>，返回「杨辉三角」的第 <code>rowIndex</code> 行。<br>在「杨辉三角」中，每个数是它左上方和右上方的数的和。<br><img src="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" alt="图片">   </p>
-<p><strong>（暴力解法）解法一：</strong>使用两个数组完成本题，<code>pre</code>表示上一个数组，<code>cur</code>表示当前生成数组，<code>pre</code>初始为<code>&#123;1&#125;</code>，由此我们从杨辉三角第二行还是生成。每一行除了第一个和最后一个元素，都能找到其左上角和右上角的元素，具体为<code>cur[i]</code>的左上角元素为<code>pre[i - 1]</code>，右上角元素为<code>pre[i]</code>。之后两数相加得到数值，由此生成<code>cur</code>。生成完后更新<code>pre = cur</code>，重复上述过程直到生成了<code>rowindex</code>行为止。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; getRow(int rowIndex) &#123;</span><br><span class="line">        vector&lt;int&gt; pre = &#123;1&#125;;</span><br><span class="line">        if(rowIndex == 0) return pre;</span><br><span class="line">        vector&lt;int&gt; result;</span><br><span class="line">        for(int i = 1;i &lt;= rowIndex;i++) &#123;</span><br><span class="line">            vector&lt;int&gt; cur(i + 1);</span><br><span class="line">            for(int j = 1;j &lt;= i + 1;j++) &#123;</span><br><span class="line">                int leftup = (j &gt; 1) ? pre[j - 2] : 0;</span><br><span class="line">                int rightup = (j &lt; i + 1) ? pre[j - 1] : 0;</span><br><span class="line">                cur[j - 1] = leftup + rightup;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = cur;</span><br><span class="line">            if(i == rowIndex) result = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h2 id="1-2-三角形最小路径和-中等-120"><a href="#1-2-三角形最小路径和-中等-120" class="headerlink" title="1.2 三角形最小路径和[中等][120]"></a>1.2 三角形最小路径和[中等][120]</h2><p><strong>题目说明：</strong>给定一个三角形 <code>triangle</code> ，找出自顶向下的最小路径和。<br>每一步只能移动到下一行中相邻的结点上。<strong>相邻的结点</strong> 在这里指的是 <strong>下标</strong> 与 <strong>上一层结点下标</strong> 相同或者等于 <strong>上一层结点下标 + 1</strong> 的两个结点。也就是说，如果正位于当前行的下标 <code>i</code> ，那么下一步可以移动到下一行的下标 <code>i</code> 或 <code>i + 1</code> 。  </p>
-<p><strong>（动态规划）解法一：</strong>本题用动态规划比较容易解决，我们直接修改数组<code>triangle</code>，定义<code>triangle[i][j]</code>表示从三角形顶端到下标<code>(i,j)</code>位置的最小路径和。易知三角形第一个元素不用修改，考虑<code>triangle[i][j]</code>,到达<code>(i,j)</code>位置的可能是其左上方，也有可能是其右上方，故定义<code>cur</code>为其右上方最小路径和为<code>triangle[i - 1][j]</code>，定义其左上方元素为<code>pre</code>为<code>triangle[i - 1][j - 1]</code>,<code>triangle</code>与<code>pre</code>与<code>cur</code>的更小者相加，最终得到到达<code>(i,j)</code>的最小路径和。当左&#x2F;右上角元素不存在时，定义它为<code>INT_MAX</code>。更新<code>triangle</code>数组后，遍历最后一行元素并返回最小值即可。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">        int minimum = INT_MAX,n = triangle.size();</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            for(int j = 0;j &lt; i + 1;j++) &#123;</span><br><span class="line">                int cur = (j &lt; i) ? triangle[i - 1][j] : INT_MAX;</span><br><span class="line">                int pre = (j &gt; 0) ? triangle[i - 1][j - 1] : INT_MAX;</span><br><span class="line">                triangle[i][j] += min(cur,pre);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j = 0;j &lt; n;j++) &#123;</span><br><span class="line">            if(triangle[n - 1][j] &lt; minimum) &#123;</span><br><span class="line">                minimum = triangle[n - 1][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return minimum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-买卖股票最佳时机-简单-121"><a href="#1-3-买卖股票最佳时机-简单-121" class="headerlink" title="1.3 买卖股票最佳时机[简单][121]"></a>1.3 买卖股票最佳时机[简单][121]</h2><p><strong>题目说明：</strong>给定一个数组 <code>prices</code> ，它的第 <code>i</code> 个元素 <code>prices[i]</code> 表示一支给定股票第 <code>i</code> 天的价格。<br>你只能选择 <code>某一天</code> 买入这只股票，并选择在 <code>未来的某一个不同的日子</code> 卖出该股票。设计一个算法来计算你所能获取的最大利润。<br>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 <code>0</code> 。  </p>
-<p><strong>解法一：</strong>一次遍历可以解决该问题，定义<code>MAX</code>维护当前遍历天数可获得最大利润。定义<code>temp_min</code>维护当前遍历天数以前的最低股票价格，遍历<code>prices[i]</code>时，<code>MAX</code>取<code>MAX</code>与<code>prices[i] - temp_min</code>的最大值。这样<code>MAX</code>的值即为遍历到<code>prices[i]</code>为止能够获得的最大利润。遍历完数组之后返回<code>MAX</code>即可。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int temp_min = INT_MAX,MAX = 0,n = prices.size();</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            temp_min = min(temp_min,prices[i - 1]);</span><br><span class="line">            MAX = max(MAX,prices[i] - temp_min);     </span><br><span class="line">        &#125;</span><br><span class="line">        return MAX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h2 id="1-4-买卖股票的最佳时机Ⅱ-中等-122"><a href="#1-4-买卖股票的最佳时机Ⅱ-中等-122" class="headerlink" title="1.4 买卖股票的最佳时机Ⅱ[中等][122]"></a>1.4 买卖股票的最佳时机Ⅱ[中等][122]</h2><p><strong>题目说明：</strong>给你一个整数数组 <code>prices</code> ，其中 <code>prices[i]</code> 表示某支股票第 <code>i</code> 天的价格。<br>在每一天，你可以决定是否购买和&#x2F;或出售股票。你在任何时候 <code>最多</code> 只能持有 <code>一股</code> 股票。你也可以先购买，然后在 <code>同一天</code> 出售。<br>返回 你能获得的 <strong>最大</strong> 利润 。  </p>
-<p><strong>（LeetCode官方解法一）（动态规划）解法一：</strong>定义<code>dp[i][0]</code>表示第<code>i</code>天不持有股票时的最大利润，<code>dp[i][1]</code>表示第<code>i</code>天持有股票时的最大利润。<code>dp[i][1]</code>可第<code>i - 1</code>天不持有股票，第<code>i</code>天买股票，或者第<code>i - 1</code>已持有股票的状态到达，同理，<code>dp[i][0]</code>可由第<code>i - 1</code>天购买股票，第<code>i</code>天卖出股票，或者第<code>i</code>天不持有股票到达。具体要分别取他们两种状态利润的最大值。故有：  </p>
-<ol>
-<li>dp[i][0] &#x3D; max(dp[i - 1][1] + prices[i],dp[i - 1][0]);  </li>
-<li>dp[i][1] &#x3D; max(dp[i - 1][0] - prices[i],dp[i - 1][1]);</li>
-</ol>
-<p>对于初始化，有<code>dp[0][0] = 0</code>,<code>dp[0][1] = -prices[0]</code>。根据上述递推公式，求得的最后一天不持有股票的利润，即为目标答案。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int n = prices.size();</span><br><span class="line">        int dp[n][2];</span><br><span class="line">        dp[0][0] = 0;</span><br><span class="line">        dp[0][1] = -prices[0];</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            dp[i][0] = max(dp[i - 1][1] + prices[i],dp[i - 1][0]);</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        return dp[n - 1][0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<p><strong>（LeetCode解法二）（贪心算法）解法二：</strong>定义<code>(i,j)</code>为第<code>i</code>天买入，第<code>j</code>天卖出的区间，则本题即求若干<code>(i,j)</code>区间产生最大利润之和，定义<code>max(i,j)</code>为该区间最大利润。可以证明<code>max(i,j)</code>等同于把<code>(i,j)</code>分为<code>j - i</code>个长度为<code>1</code>的区间，每个区间求最大利润。故本题可以分割为求<code>n - 1</code>个区间，并求其最大利润。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int n = prices.size(),MAX = 0;</span><br><span class="line">        for(int i = 1;i &lt; n;i++) &#123;</span><br><span class="line">            MAX = max(MAX,MAX + prices[i] - prices[i - 1]);</span><br><span class="line">        &#125;</span><br><span class="line">        return MAX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h2 id="1-5-最长连续序列-中等-128"><a href="#1-5-最长连续序列-中等-128" class="headerlink" title="1.5 最长连续序列[中等][128]"></a>1.5 最长连续序列[中等][128]</h2><p><strong>题目说明：</strong>给定一个未排序的整数数组 <code>nums</code> ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。<br>请你设计并实现时间复杂度为 <code>O(n)</code> 的算法解决此问题。  </p>
-<p><strong>（哈希表）解法一：</strong>题目明确提出<code>O(n)</code>级时间复杂度，所以暴力解法就不适用了，考虑使用哈希表。定义哈希表<code>mp</code>,键值对为<code>&lt;int,int[2]&gt;</code>，其中键表示元素值，值为数组，其中数组第一个元素表示当前元素所在区间的左边界，数组第二个元素表示当前元素所在区间的右边界。本解法一次遍历可以完成解题，思路如下，遍历数组<code>nums</code>，遍历到<code>nums[i]</code>时，定义<code>nums[i] = cur</code>,哈希表中没有这个元素，就在哈希表中添加这个元素，如果哈希表中已经存在这个元素，跳过避免重复。之后我们寻找当前元素的前&#x2F;后两个元素，定义为<code>pre</code>&#x2F;<code>next</code>在哈希表中是否存在，如果存在，更新哈希表中当前元素所在区间的左&#x2F;右边界值为<code>mp[pre][0]</code>&#x2F;<code>mp[next][1]</code>。一个新的元素到达，可能有如下三种可能：  </p>
-<ol>
-<li>该元素连接哈希表中已知区间的右边界。   </li>
-<li>该元素连接哈希表中已知区间的左边界。  </li>
-<li>该元素不与哈希表中任意元素相连。  </li>
-<li>该元素连接哈希表中两个区间。</li>
-</ol>
-<p>对于<code>情况1</code>，对应的是<code>mp[pre]</code>存在，而<code>mp[next]</code>不存在，此时要更新哈希表区间左边界元素的右边界值，有<code>mp[mp[cur][0]][1] = mp[cur][1]</code>。<br>对于<code>情况2</code>，对应的是<code>mp[next]</code>存在，而<code>mp[pre]</code>不存在，此时要更新哈希表区间右边界元素的左边界值，有<code>mp[mp[cur][1]][0] = mp[cur][0]</code>。<br>对于<code>情况3</code>，对应的是<code>mp[next]</code>不存在，<code>mp[pre]</code>不存在，此时不必特殊处理。定义<code>mp[cur]</code>的第一二个元素都为<code>cur</code>。<br>对于<code>情况4</code>，对应的是<code>mp[next]</code>存在，而<code>mp[pre]</code>也存在，此时即要更新哈希表区间右边界元素的右边界值，又要更新哈希表区间右边界元素的左边界值，有<code>mp[mp[cur][0]][1] = mp[cur][1]</code>,<code>mp[mp[cur][1]][0] = mp[cur][0]</code>。最终返回哈希表中左右边界差值最大的值 + 1 即为正确答案。<br>之所以上述过程可以解题，是因为一个新到达元素，只可能是以上四种情况之一，并且因为一个非重复元素如果与区间相连，坑定连接一个区间的边界。于是我们只要每次更新这个元素（区间新的边界），以及该元素不相邻的另一个边界，就可以保证区间的边界元素信息正确。由此可以保证最后结果正确。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestConsecutive(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        unordered_map&lt;int,int[2]&gt; mp;</span><br><span class="line">        int n = nums.size(),MAX = 0;</span><br><span class="line">        for(int i = 0;i &lt; n;i++) &#123;</span><br><span class="line">            int cur = nums[i];</span><br><span class="line">            auto it = mp.find(cur);</span><br><span class="line">            if(it == mp.end()) &#123;</span><br><span class="line">               mp[cur][0] = cur;</span><br><span class="line">               mp[cur][1] = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            else continue;</span><br><span class="line">            auto pre = mp.find(cur - 1);</span><br><span class="line">            auto next = mp.find(cur + 1);</span><br><span class="line">            mp[cur][0] = pre == mp.end() ? cur : mp[cur - 1][0];</span><br><span class="line">            mp[cur][1] = next == mp.end() ? cur : mp[cur + 1][1];</span><br><span class="line">            if(pre != mp.end()) &#123;</span><br><span class="line">                int left = mp[cur][0];</span><br><span class="line">                mp[left][1] = mp[cur][1];</span><br><span class="line">            &#125;</span><br><span class="line">            if(next != mp.end()) &#123;</span><br><span class="line">                int right = mp[cur][1];</span><br><span class="line">                mp[right][0] = mp[cur][0];</span><br><span class="line">            &#125;</span><br><span class="line">            MAX = max(MAX,mp[cur][1] - mp[cur][0] + 1);</span><br><span class="line">        &#125;</span><br><span class="line">        return MAX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<p><strong>（LeetCode官方解法）（哈希表）解法二</strong>同样是使用哈希表，现在有一种更为简单的方法，首先用<code>unordered_set</code>容器<code>st</code>，保存<code>nums</code>中元素，这样做可以去除<code>nums</code>中重复元素。之后遍历<code>st</code>容器，定义遍历到元素为<code>num</code>，如果<code>num - 1</code>存在，跳过本次遍历，这样做，最终<code>num</code>为某个区间的左边界。之后不断在容器中寻找<code>num + 1,num + 2,....</code>，同时记录长度。找到的最大区间长度即为目标。本方法每个元素最多只需要遍历两次即可。故为<code>0(n)</code>时间复杂度。   </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestConsecutive(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        unordered_set&lt;int&gt; st;</span><br><span class="line">        for(const int&amp; num : nums) &#123;</span><br><span class="line">            st.insert(num);</span><br><span class="line">        &#125;</span><br><span class="line">        int MAX = 0;</span><br><span class="line">        for(const int&amp; num : st) &#123;</span><br><span class="line">            if(!st.count(num - 1)) &#123;</span><br><span class="line">                int temp = 1;</span><br><span class="line">                int cur = num;</span><br><span class="line">                while(st.count(cur + 1)) &#123;</span><br><span class="line">                    cur++;</span><br><span class="line">                    temp++;</span><br><span class="line">                &#125;</span><br><span class="line">                MAX = max(temp,MAX);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return MAX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h1 id="2、链表操作"><a href="#2、链表操作" class="headerlink" title="2、链表操作"></a>2、链表操作</h1><h1 id="3、字符操作"><a href="#3、字符操作" class="headerlink" title="3、字符操作"></a>3、字符操作</h1><h2 id="3-1-验证回文串-简单-125"><a href="#3-1-验证回文串-简单-125" class="headerlink" title="3.1 验证回文串[简单][125]"></a>3.1 验证回文串[简单][125]</h2><p><strong>题目说明：</strong>如果在将所有大写字符转换为小写字符、并移除所有非字母数字字符之后，短语正着读和反着读都一样。则可以认为该短语是一个 <strong>回文串</strong> 。<br>字母和数字都属于字母数字字符。<br>给你一个字符串 <code>s</code>，如果它是 <strong>回文串</strong> ，返回 <code>true</code> ；否则，返回 <code>false</code> 。   </p>
-<p><strong>解法一：</strong>本题使用几个库函数可以很容易解决，<code>isalnum(c)</code>判断<code>c</code>是否为字母或数字类字符，若是返回<code>true</code>,否则返回<code>false</code>。<code>tolower(c)</code>函数，如果<code>c</code>为数字，<code>c</code>不该边，如果<code>c</code>为字母，将其转化为小写字母。有了如上函数，我们使用双指针，初始指向字符串两端，分别按照各自顺序找第一个数字或字母类字符，然后比较他们是否相等，如果相等，左右指针移动一个位置，然后重复上述过程，如不相等，返回<code>false</code>，如果遍历完成，返回<code>true</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(string s) &#123;</span><br><span class="line">        int n = s.size();</span><br><span class="line">        int left = 0,right = n - 1;</span><br><span class="line">        while(left &lt; right) &#123;</span><br><span class="line">            while(left &lt; right &amp;&amp; !isalnum(s[left])) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            while(left &lt; right &amp;&amp; !isalnum(s[right])) &#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            if(tolower(s[left]) != tolower(s[right])) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h2 id="3-2-被围绕的区域-中等-130"><a href="#3-2-被围绕的区域-中等-130" class="headerlink" title="3.2 被围绕的区域[中等][130]"></a>3.2 被围绕的区域[中等][130]</h2><p><strong>题目说明：</strong>给你一个 <code>m x n</code> 的矩阵 <code>board</code> ，由若干字符 <code>&#39;X&#39;</code> 和 <code>&#39;O&#39;</code> ，找到所有被 <code>&#39;X&#39;</code> 围绕的区域，并将这些区域里所有的 <code>&#39;O&#39;</code> 用 <code>&#39;X&#39;</code> 填充。<br><img src="https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg" alt="图片">    </p>
-<p><strong>（LeetCode官方解法）（深度优先遍历）解法一：</strong>由于边界上的元素一定是不被包围的，所以我们从边界出发，寻找<code>&#39;O&#39;</code>把他标记为<code>&#39;Y&#39;</code>,之后搜索该位置相邻位置进行同样操作。如此，遍历完四个边界之后，所有<code>&#39;Y&#39;</code>为不被包围的<code>&#39;O&#39;</code>,要将其还原，所有<code>&#39;O&#39;</code>即为被包围的，要将其更改为<code>&#39;X&#39;</code>。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int m,n;</span><br><span class="line">    void dfs(int x,int y,vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</span><br><span class="line">        if(x &lt; 0 || x &gt;= m || y &lt; 0 || y &gt;= n || board[x][y] != &#x27;O&#x27;) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        board[x][y] = &#x27;A&#x27;;</span><br><span class="line">        dfs(x - 1,y,board);</span><br><span class="line">        dfs(x + 1,y,board);</span><br><span class="line">        dfs(x,y - 1,board);</span><br><span class="line">        dfs(x,y + 1,board);</span><br><span class="line">    &#125;</span><br><span class="line">    void solve(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</span><br><span class="line">        m = board.size();</span><br><span class="line">        n = board[0].size();</span><br><span class="line">        if(n &lt;= 2 || m &lt;= 2) return;</span><br><span class="line">        for(int i = 0;i &lt; m;i++) &#123;</span><br><span class="line">            dfs(i,0,board);</span><br><span class="line">            dfs(i,n - 1,board);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j = 0;j &lt; n;j++) &#123;</span><br><span class="line">            dfs(0,j,board);</span><br><span class="line">            dfs(m - 1,j,board);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0;i &lt; m;i++) &#123;</span><br><span class="line">            for(int j = 0;j &lt; n;j++) &#123;</span><br><span class="line">                if(board[i][j] == &#x27;A&#x27;) &#123;</span><br><span class="line">                    board[i][j] = &#x27;O&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">                else if(board[i][j] == &#x27;O&#x27;) &#123;</span><br><span class="line">                    board[i][j] = &#x27;X&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<p><strong>（LeetCode官方解法二）（广度优先遍历）解法二：</strong>本题使用广度优先算法也是可以解题的，具体思想是，从边界开始遍历，使用队列<code>que</code>记录<code>&#39;O&#39;</code>的下标，然后把该位置标记为<code>&#39;A&#39;</code>，之后循环开始遍历。从栈中取出元素下标后该元素出队，然后访问其相邻有效位置，若为<code>&#39;O&#39;</code>,则其为不被包围的，将其标记为<code>&#39;A&#39;</code>。重复此过程知道<code>que</code>为空，之后遍历每个元素，发现<code>&#39;A&#39;</code>还原为<code>&#39;O&#39;</code>,发现<code>&#39;O&#39;</code>说明它被包围，将其改为<code>&#39;X&#39;</code>。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void solve(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</span><br><span class="line">        int dx[4] = &#123;1,-1,0,0&#125;;</span><br><span class="line">        int dy[4] = &#123;0,0,1,-1&#125;;</span><br><span class="line">        int m = board.size(),n = board[0].size();</span><br><span class="line">        queue&lt;pair&lt;int,int&gt;&gt; que;</span><br><span class="line">        for(int j = 0;j &lt; n;j++) &#123;</span><br><span class="line">            if(board[0][j] == &#x27;O&#x27;) &#123;</span><br><span class="line">                board[0][j] = &#x27;A&#x27;;</span><br><span class="line">                que.emplace(0,j);</span><br><span class="line">            &#125;</span><br><span class="line">            if(board[m - 1][j] == &#x27;O&#x27;) &#123;</span><br><span class="line">                board[m - 1][j] = &#x27;A&#x27;;</span><br><span class="line">                que.emplace(m - 1,j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0;i &lt; m;i++) &#123;</span><br><span class="line">            if(board[i][0] == &#x27;O&#x27;) &#123;</span><br><span class="line">                board[i][0] = &#x27;A&#x27;;</span><br><span class="line">                que.emplace(i,0);</span><br><span class="line">            &#125;</span><br><span class="line">            if(board[i][n - 1] == &#x27;O&#x27;) &#123;</span><br><span class="line">                board[i][n - 1] = &#x27;A&#x27;;</span><br><span class="line">                que.emplace(i,n - 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(!que.empty()) &#123;</span><br><span class="line">            int x = que.front().first,y = que.front().second;</span><br><span class="line">            que.pop();</span><br><span class="line">            for(int i = 0;i &lt; 4;i++) &#123;</span><br><span class="line">                int mx  = x + dx[i],my = y + dy[i];</span><br><span class="line">                if(mx &lt; 0 || mx &gt;= m || my &lt; 0 || my &gt;= n || board[mx][my] != &#x27;O&#x27;) &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    board[mx][my] = &#x27;A&#x27;;</span><br><span class="line">                    que.emplace(mx,my);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0;i &lt; m;i++) &#123;</span><br><span class="line">            for(int j = 0;j &lt; n;j++) &#123;</span><br><span class="line">                if(board[i][j] == &#x27;O&#x27;) &#123;</span><br><span class="line">                    board[i][j] = &#x27;X&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">                else if(board[i][j] == &#x27;A&#x27;) &#123;</span><br><span class="line">                    board[i][j] = &#x27;O&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h2 id="3-3-分割回文串-中等-131"><a href="#3-3-分割回文串-中等-131" class="headerlink" title="3.3 分割回文串[中等][131]"></a>3.3 分割回文串[中等][131]</h2><p><strong>题目说明：</strong>给你一个字符串 <code>s</code>，请你将 <code>s</code> 分割成一些子串，使每个子串都是 <strong>回文串</strong> 。返回 <code>s</code> 所有可能的分割方案。<br><strong>回文串</strong> 是正着读和反着读都一样的字符串。    </p>
-<p><strong>（回溯算法）解法一：</strong>首先定义一个函数<code>istarget(string&amp; s,int left,int right)</code>。用于判断<code>s</code>下标为<code>[left,right]</code>这段区间内的字符是否为回文串，若是返回<code>true</code>,不是返回<code>false</code>。定义<code>result</code>收集可行的分割方案，定义<code>path</code>收集每种分割方案。现在给出回溯算法函数<code>backtracking(string&amp; s,int start_index)</code>。接下给给出回溯算法的几个因素：  </p>
-<ol>
-<li>函数参数的定义：<code>s</code>为待分割字符串，<code>start_index</code>为函数起始位置。  </li>
-<li>终止条件：当<code>start_index == s.size()</code>时，说明已经得到了一个有效的分割，此时需要搜集<code>path</code>,同时终止。  </li>
-<li>单层搜索逻辑：这也是该函数的核心，我们利用<code>for循环</code>来完成本层搜索，<code>for循环</code>起始位置是<code>start_index</code>,循环变量<code>i</code>从<code>start_index</code>到<code>s.size() - 1</code>变化。我们检查<code>start_index</code>到<code>i</code>的这段区间内字符是否为回文串，如果是，说明<code>s</code>从<code>0</code>到<code>i</code>目前分割的都是回文串，进入下层递归，起始位置为<code>i + 1</code>。若不为回文串，说明目前<code>s</code>从<code>0</code>到<code>i</code>的分割方法不行，本轮<code>for循环</code>不行，待下轮<code>i + 1</code>之后再检查。为了防止递归调用的<code>path</code>相互影响，递归调用后面接上一个回溯的过程。本题而言，之后<code>start_index</code>到<code>i</code>这段字符是回文串才会递归调用，并将这段回文串放入<code>path</code>中，故回溯的过程便是将<code>path</code>中新放入的回文串推出。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; result;</span><br><span class="line">    vector&lt;string&gt; path;</span><br><span class="line">    bool istarget(string&amp; s,int left,int right) &#123;</span><br><span class="line">        while(left &lt; right) &#123;</span><br><span class="line">            if(s[left++] != s[right--]) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void backtracking(string&amp; s,int start_index) &#123;</span><br><span class="line">        if(start_index == s.size()) &#123;</span><br><span class="line">            result.push_back(path);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = start_index;i &lt; s.size();i++) &#123;</span><br><span class="line">            if(istarget(s,start_index,i)) &#123;</span><br><span class="line">                path.push_back(s.substr(start_index,i - start_index + 1));</span><br><span class="line">                backtracking(s,i + 1);</span><br><span class="line">                path.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; partition(string s) &#123;</span><br><span class="line">        backtracking(s,0);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-<p><strong>对该解法的改进（参考LeetCode官方解法）：</strong>在递归调用的时候，有可能重复判断某区间字符串是否为回文串，为了避免这种情况，可以用动态规划提前计算<code>[s[i],s[j]]</code>这段区间是否为回文串，定义<code>f[i][j]</code>表示<code>[s[i],s[j]]</code>这段区间是否为回文串，若是为<code>true</code>,不是为<code>false</code>。我们可以得到递推公式<code>f[i][j] = f[i + 1][j - 1] &amp;&amp; s[i] == s[j]</code>。由此可以得到所有<code>f[i][j]</code>。之后直接回溯算法判断<code>f[start_Index][i]</code>即可。动态规划部分代码如下：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int n = s.size();</span><br><span class="line">f.assign(n,vector&lt;int&gt;(n,true));</span><br><span class="line">for(int i = n - 1;i &gt;= 0;i--) &#123;</span><br><span class="line">    for(int j = i + 1;j &lt; n;j++) &#123;</span><br><span class="line">        f[i][j] = (s[i] == s[j]) &amp;&amp; f[i + 1][j - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-<h1 id="4、数值操作"><a href="#4、数值操作" class="headerlink" title="4、数值操作"></a>4、数值操作</h1><h1 id="5、二叉树"><a href="#5、二叉树" class="headerlink" title="5、二叉树"></a>5、二叉树</h1><h2 id="5-1-求根节点到叶子节点数字之和-中等-129"><a href="#5-1-求根节点到叶子节点数字之和-中等-129" class="headerlink" title="5.1 求根节点到叶子节点数字之和[中等][129]"></a>5.1 求根节点到叶子节点数字之和[中等][129]</h2><p><strong>题目说明：</strong>给你一个二叉树的根节点 <code>root</code> ，树中每个节点都存放有一个 <code>0</code> 到 <code>9</code> 之间的数字。<br>每条从根节点到叶节点的路径都代表一个数字：  </p>
-<ul>
-<li>例如，从根节点到叶节点的路径 1 -&gt; 2 -&gt; 3 表示数字 123 。</li>
-</ul>
-<p>计算从根节点到叶节点生成的 <strong>所有数字之和</strong> 。<br><strong>叶节点</strong> 是指没有子节点的节点。  </p>
-<p><strong>（深度优先遍历）解法一：</strong>使用递归函数解此题，定义<code>search(Treenode* root,int sum)</code>。如果<code>sum</code>代表其双亲结点传入值，计算当前路径的值为<code>cur = sum * 10 + root-&gt;val</code>,如果<code>root</code>为空结点，返回<code>0</code>,如果<code>root</code>为叶子节点，那么就找到一条路径，直接返回<code>cur</code>即可。其他情况返回对其左右子树的遍历即可。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int search(TreeNode* root,int sum) &#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        int cur = sum * 10 + root-&gt;val;        </span><br><span class="line">        if(root &amp;&amp; !root-&gt;left &amp;&amp; !root-&gt;right) &#123;</span><br><span class="line">            return cur;</span><br><span class="line">        &#125;</span><br><span class="line">        return search(root-&gt;left,cur) + search(root-&gt;right,cur);</span><br><span class="line">    &#125;</span><br><span class="line">    int sumNumbers(TreeNode* root) &#123;</span><br><span class="line">        return search(root,0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure>
-
-
-          
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
-      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -286,7 +203,7 @@
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -299,123 +216,17 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/022/10/20/LeetCode%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0119~%E6%9C%80%E6%96%B0/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2022/09/15/%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">后续学习计划</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1、数组操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E2%85%A1-%E7%AE%80%E5%8D%95-119"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 杨辉三角Ⅱ[简单][119]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C-%E4%B8%AD%E7%AD%89-120"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 三角形最小路径和[中等][120]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-%E7%AE%80%E5%8D%95-121"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 买卖股票最佳时机[简单][121]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E2%85%A1-%E4%B8%AD%E7%AD%89-122"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 买卖股票的最佳时机Ⅱ[中等][122]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97-%E4%B8%AD%E7%AD%89-128"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 最长连续序列[中等][128]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">2、链表操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">3、字符操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2-%E7%AE%80%E5%8D%95-125"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 验证回文串[简单][125]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%8C%BA%E5%9F%9F-%E4%B8%AD%E7%AD%89-130"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 被围绕的区域[中等][130]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2-%E4%B8%AD%E7%AD%89-131"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 分割回文串[中等][131]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E6%95%B0%E5%80%BC%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">4、数值操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">5.</span> <span class="toc-text">5、二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E6%B1%82%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C-%E4%B8%AD%E7%AD%89-129"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 求根节点到叶子节点数字之和[中等][129]</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
- 
-
-
-
-
-
+    
 
 
           </div>
@@ -443,8 +254,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -514,11 +325,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cpp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cpp</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
