@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>spring boot学习笔记 | Hexo</title>
+  <title>javaWeb学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录spring boot学习的过程">
+  <meta name="description" content="记录javaWeb后端开发学习的过程，包括spring boot框架等内容。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot学习笔记">
-<meta property="og:url" content="http://example.com/2024/12/09/spring-boot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="javaWeb学习笔记">
+<meta property="og:url" content="http://example.com/2024/12/10/javaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="记录spring boot学习的过程">
+<meta property="og:description" content="记录javaWeb后端开发学习的过程，包括spring boot框架等内容。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-12-09T08:12:14.000Z">
-<meta property="article:modified_time" content="2024-12-09T08:14:55.987Z">
+<meta property="article:published_time" content="2024-12-10T01:58:22.000Z">
+<meta property="article:modified_time" content="2024-12-10T08:50:00.491Z">
 <meta property="article:author" content="Trance4ever">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -167,20 +167,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-spring-boot学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javaWeb学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      spring boot学习笔记
+      javaWeb学习笔记
     </h1>
   
   
         
-        <a href="/2024/12/09/spring-boot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2024-12-09T08:12:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-09</time>
+        <a href="/2024/12/10/javaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2024-12-10T01:58:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-10</time>
 </a>
         
       </header>
@@ -189,8 +189,79 @@
       
         
           
-            <p>记录spring boot学习的过程            </p>
+            <p>记录javaWeb后端开发学习的过程，包括spring boot框架等内容。         </p>
 <span id="more"></span>
+
+<h1 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p><code>maven</code>和<code>cmake</code>一样，都是管理项目的工具，只是他们分别适用于<code>C/C++</code>和<code>java</code>，利用<code>maven</code>创建的工程，目录结构如下：    </p>
+<ul>
+<li><code>src-&gt;main</code>：实际项目资源     </li>
+<li><code>src-&gt;main-&gt;java</code>：源代码目录    </li>
+<li><code>src-&gt;main-&gt;resources</code>：配置文件目录     </li>
+<li><code>src-&gt;test</code>：测试项目资源    </li>
+<li><code>pom.xml</code>：项目配置文件</li>
+</ul>
+<h2 id="maven的部署"><a href="#maven的部署" class="headerlink" title="maven的部署"></a>maven的部署</h2><p><code>maven</code>的部署分为以下三步：   </p>
+<ul>
+<li>从官网下载<code>maven</code>，修改<code>PATH</code>环境变量，<code>MacBook</code>修改<code>~/.bash_profile</code>之后，使用<code>source ~/.bash_profile</code>即可    </li>
+<li><code>maven</code>修改镜像地址，添加私有仓库地址如阿里云    </li>
+<li><code>maven</code>修改本地仓库地址</li>
+</ul>
+<h2 id="maven的基本使用"><a href="#maven的基本使用" class="headerlink" title="maven的基本使用"></a>maven的基本使用</h2><p><strong>坐标：</strong>资源的唯一标识，通过该坐标可以唯一定位资源位置，使用坐标还可以定义项目或引入项目中需要的依赖。坐标组成元素如下：    </p>
+<ul>
+<li><code>groupId</code>：定义当前项目隶属组织结构，如<code>com.qsl</code>    </li>
+<li><code>artifactId</code>：定义当前项目名称     </li>
+<li><code>version</code>：定义当前项目版本号</li>
+</ul>
+<p><strong>添加一个maven模块：</strong>有两种方式可以添加一个<code>maven</code>模块：    </p>
+<ul>
+<li>点击右侧maven面板<code>+</code>，选择<code>maven</code>模块的<code>pom.xml</code>文件     </li>
+<li>点击<code>文件-&gt;项目结构-&gt;模块</code>，之后点击面板的<code>+</code>，选中一个<code>pom.xml</code>文件</li>
+</ul>
+<h2 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h2><p><strong>依赖传递：</strong>依赖具有传递性。<br><strong>依赖添加：</strong>如果需要添加以来，只需要在<code>pom.xml</code>文件中添加依赖元素即可，比如：     </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.tersesystems.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>依赖排除：</strong>对于想要排除的依赖，在<code>pom.xml</code>文件中添加排除项即可，如：      </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependecy</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>groupId<span class="tag">&lt;<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>artifactId<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">        ......</span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependecy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>依赖范围：</strong>依赖的jar包，默认情况下，可以在任何地方使用。可以通过<code>&lt;scope&gt;...&lt;/scope&gt;</code>设置其作用范围。范围值如下：    </p>
+<ul>
+<li><code>test</code>：仅在<code>test</code>文件夹有效    </li>
+<li><code>provided</code>：在<code>main</code>和<code>test</code>文件夹有效    </li>
+<li><code>runtime</code>：在<code>test</code>文件夹和<code>package</code>指令范围内有效    </li>
+<li><code>compile</code>：默认，在所有范围有效</li>
+</ul>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><code>maven</code>的生命周期就是为了对所有的<code>maven</code>项目构建过程进行抽象和统一。<br><code>maven</code>有3套相互独立的生命周期，分别为：    </p>
+<ul>
+<li><code>clean</code>：清理工作    </li>
+<li><code>default</code>：核心工作，如：编译、测试、打包、安装、部署等    </li>
+<li><code>site</code>：生成报告、发布站点等</li>
+</ul>
+<p>其中需要重点关注以下阶段：    </p>
+<ol>
+<li><code>clean</code>：移除上次构建的文件   </li>
+<li><code>compile</code>：编译项目源代码   </li>
+<li><code>test</code>：使用合适的单元测试架构运行测试   </li>
+<li><code>package</code>：将编译后的文件打包   </li>
+<li><code>install</code>：安装项目到本地仓库</li>
+</ol>
+<h1 id="Web后端入门"><a href="#Web后端入门" class="headerlink" title="Web后端入门"></a>Web后端入门</h1><h2 id="HTTP数据格式"><a href="#HTTP数据格式" class="headerlink" title="HTTP数据格式"></a>HTTP数据格式</h2><p><code>HTTP</code>协议是超文本传输协议，规定了浏览器和服务器之间数据传输的规则。     </p>
+<ul>
+<li>基于<code>TCP</code>协议    </li>
+<li>无状态的协议    </li>
+<li>基于请求-响应模型</li>
+</ul>
+<p><code>HTTP</code>请求数据格式要求为：<br>第一行为请求行，格式为：<code>请求方式 资源路径 协议版本</code>。<br>从第二行开始，为请求头部分，都为键值对类型：<code>key: value</code>，常见字段有：    </p>
+<ul>
+<li><code>Host</code>：请求主机名称   </li>
+<li><code>User-Agent</code>：浏览器版本    </li>
+<li><code>Accept</code>：表示浏览器能接受的资源类型    </li>
+<li><code>Accept-Language</code>：表示浏览器偏好的语言    </li>
+<li><code>Accept-Encoding</code>：表示浏览器可以支持的压缩类型   </li>
+<li><code>Content-Type</code>：请求主体的数据类型   </li>
+<li><code>Content-Length</code>：请求主体的大小（字节）</li>
+</ul>
+<p>如果使用<code>POST</code>请求，则在请求头后，隔一个空行为请求体，无大小限制。   </p>
+
           
         
     </div>
@@ -274,7 +345,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/024/12/09/spring-boot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/024/12/10/javaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,7 +388,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#maven"><span class="toc-number">1.</span> <span class="toc-text">maven</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.</span> <span class="toc-text">maven的部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">maven的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">依赖管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.5.</span> <span class="toc-text">生命周期</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web%E5%90%8E%E7%AB%AF%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">Web后端入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">HTTP数据格式</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
