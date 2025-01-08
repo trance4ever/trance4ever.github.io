@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>后续学习计划 | Hexo</title>
+  <title>springCloudAlibaba学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计划后续的学习计划">
+  <meta name="description" content="记录springCloudAlibaba微服务学习的过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后续学习计划">
-<meta property="og:url" content="http://example.com/2022/09/15/%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:title" content="springCloudAlibaba学习笔记">
+<meta property="og:url" content="http://example.com/2025/01/07/springCloudAlibaba%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="计划后续的学习计划">
+<meta property="og:description" content="记录springCloudAlibaba微服务学习的过程。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-15T13:09:23.000Z">
-<meta property="article:modified_time" content="2024-11-01T10:14:26.914Z">
+<meta property="article:published_time" content="2025-01-07T02:16:17.000Z">
+<meta property="article:modified_time" content="2025-01-08T08:56:14.597Z">
 <meta property="article:author" content="Trance4ever">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -167,20 +167,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-后续学习计划" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-springCloudAlibaba学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      后续学习计划
+      springCloudAlibaba学习笔记
     </h1>
   
   
         
-        <a href="/2022/09/15/%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="archive-article-date">
-  	<time datetime="2022-09-15T13:09:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-15</time>
+        <a href="/2025/01/07/springCloudAlibaba%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2025-01-07T02:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-07</time>
 </a>
         
       </header>
@@ -189,18 +189,73 @@
       
         
           
-            <p>计划后续的学习计划  </p>
+            <p>记录springCloudAlibaba微服务学习的过程。         </p>
 <span id="more"></span>
+<h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>微服务是由以单一应用程序构成的小服务，自己拥有自己的进程与轻量化处理，与其他服务通过<code>HTTP</code>的接口进行通信，微服务有如下特点：    </p>
+<ul>
+<li>微服务架构拆分细致，让专业的人做专业的事   </li>
+<li>每个服务互不影响，且需要独立部署   </li>
+<li>每个服务都具有单独的数据库    </li>
+<li>微服务适合互联网公司迅捷开发，粒度更精细</li>
+</ul>
+<p>由于微服务架构的上述特性，其可以承载超高并发量，适合成本高，用户量大的网站。   </p>
+<h2 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h2><p>下面列举常用注解：<br><code>@EnableFeignClients</code>：启用<code>OpenFeign</code>功能。<br><code>@FeignClient(value = &quot;微服务名称&quot;)</code>：在接口上方加上该注解，完成<code>http</code>请求的自动发送。   </p>
+<h2 id="服务拆分"><a href="#服务拆分" class="headerlink" title="服务拆分"></a>服务拆分</h2><p>可以利用<code>maven</code>进行拆分，每一个功能拆分为一个模块，整体作为一个聚合项目。   </p>
+<h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><p>当服务拆分后，不同模块之间通过远程调用，进行数据的交互。<br>由此为了保证服务的运行，需要进行模块间远程调用。<br><code>Spring</code>提供了<code>RestTemplate</code>工具，可以方便的实现<code>http</code>请求的发送，使用步骤为：   </p>
+<ul>
+<li>注入<code>RestTemplate</code>到<code>spring</code>容器   </li>
+<li>使用<code>RestTemplate</code>，发起远程调用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">restTemplate.exchange(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;METHOD&quot;</span>, requestEntity, Class, <span class="keyword">new</span> <span class="title class_">ParameterizedTypeReference</span>&lt;List&lt;ItemDTO&gt;&gt;（)&#123;&#125;,</span><br><span class="line">    Map.of(<span class="string">&quot;ids&quot;</span>, CollUtil.join(itemIDs, <span class="string">&quot;,&quot;</span>));</span><br></pre></td></tr></table></figure>
 
-<h2 id="C-算法"><a href="#C-算法" class="headerlink" title="C++算法"></a>C++算法</h2><ol>
-<li>学习Morris遍历算法。  </li>
-<li>学习记忆化搜索。</li>
-</ol>
+<h2 id="服务治理"><a href="#服务治理" class="headerlink" title="服务治理"></a>服务治理</h2><h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><h2 id="Nacos-简介"><a href="#Nacos-简介" class="headerlink" title="Nacos-简介"></a>Nacos-简介</h2><p><code>Nacos</code>是一个动态服务发现、配置和服务管理平台，用于构建云原生应用程序。<br><strong>服务发现是微服务架构的关键组件之一。</strong><br><strong>Nacos&#x3D;组册中心+配置中心组合。</strong><br>通俗的说，<code>Nacos</code>的组件的功能类似于前台，为服务消费者提供<strong>服务发现</strong>和<strong>服务注册</strong>的功能。<br>单机模式启动<code>nacos</code>：<code>./startup.sh -m standalone</code>。<br>所有的服务提供者都要向注册中心，发送心跳续约，以表示服务存在。    </p>
+<h2 id="Nacos-服务注册"><a href="#Nacos-服务注册" class="headerlink" title="Nacos-服务注册"></a>Nacos-服务注册</h2><p>要想完成服务注册的过程，需要如下步骤：   </p>
+<ul>
+<li><code>pom</code>文件引入<code>nacos discoverry</code>依赖   </li>
+<li>配置文件中配置<code>nacos</code>地址</li>
+</ul>
+<h2 id="Nacos-服务发现"><a href="#Nacos-服务发现" class="headerlink" title="Nacos-服务发现"></a>Nacos-服务发现</h2><p>如果是想要发现服务，需要做如下步骤：   </p>
+<ul>
+<li><code>pom</code>文件引入<code>nacos discoverry</code>依赖   </li>
+<li>配置文件中配置<code>nacos</code>地址   </li>
+<li>使用服务发现<code>API</code>：<code>DiscoveryClient</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> DiscoveryClient discoveryClient;</span><br><span class="line"><span class="comment">// 获取服务实例列表</span></span><br><span class="line">List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(<span class="string">&quot;服务名称&quot;</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="OpenFeign-简介"><a href="#OpenFeign-简介" class="headerlink" title="OpenFeign-简介"></a>OpenFeign-简介</h2><p><code>OpenFeign</code>是一个声明式的<code>http</code>客户端，可以简化<code>http</code>请求发送的过程。<br><code>OpenFeign</code>已经被<code>springCloud</code>自动装配，所以想要使用该组件，只需要如下步骤：   </p>
+<ul>
+<li>引入依赖，包括<code>OpenFeign</code>和负载均衡组件<code>SpringCLoudLoadBalancer</code>    </li>
+<li>通过<code>@EnableFeignClients</code>注解，启用<code>OpenFeign</code>功能    </li>
+<li>编写<code>FeignClient</code>     </li>
+<li>使用<code>FeignClient</code>，实现远程调用</li>
+</ul>
+<p>代码示例：   </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(&quot;item-service&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ItemClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/items&quot;)</span></span><br><span class="line">    List&lt;ItemDTO&gt; <span class="title function_">queryItemByIds</span><span class="params">(<span class="meta">@RequestParam(&quot;ids&quot;)</span> Collection&lt;Long&gt; ids)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="OpenFeign-开启连接池支持"><a href="#OpenFeign-开启连接池支持" class="headerlink" title="OpenFeign-开启连接池支持"></a>OpenFeign-开启连接池支持</h2><p><code>OpenFeign</code>默认使用<code>client</code>发送<code>http</code>请求，为了优化性能，可以启用连接吃，步骤如下：   </p>
+<ul>
+<li>引入<code>feign-okhttp</code>依赖    </li>
+<li>配置文件开启连接池功能</li>
+</ul>
+<h2 id="OpenFeign-最佳实践"><a href="#OpenFeign-最佳实践" class="headerlink" title="OpenFeign-最佳实践"></a>OpenFeign-最佳实践</h2><p>如果每两个类都编写<code>FeignClient</code>，会重复编写许多代码，一个更好的解决方案是，单独创建一个模块，专门负责远程调用，即存放所有的<code>FeignClient</code>。       </p>
+<h2 id="OpenFeign-日志输出"><a href="#OpenFeign-日志输出" class="headerlink" title="OpenFeign-日志输出"></a>OpenFeign-日志输出</h2><p>OpenFeign只会在FeignClient所在包的日志级别为DEBUG时，才会输出日志。而且其日志级别有4级：  </p>
+<ul>
+<li>NONE：不记录任何日志信息，这是默认值  </li>
+<li>BASIC：仅记录请求的方法，URL以及响应状态码和执行时间  </li>
+<li>HEADERS：在BASIC的基础上，额外记录了请求和响应的头信息  </li>
+<li>FULL：记录所有请求和响应的明细，包括头信息、请求体、元数据</li>
+</ul>
+<p>Feign默认的日志级别就是NONE，所以默认我们看不到请求日志。<br>接下来，要让日志级别生效，还需要配置这个类。有两种方式：<br>局部生效：在某个<code>FeignClient</code>中配置，只对当前<code>FeignClient</code>生效：<code>@FeignClient(value = &quot;item-service&quot;, configuration = DefaultFeignConfig.class)</code>。<br>全局生效：在<code>@EnableFeignClients</code>中配置，针对所有<code>FeignClient</code>生效：<code>@EnableFeignClients(defaultConfiguration = DefaultFeignConfig.class)</code>。   </p>
 
           
         
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -220,7 +275,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/计划//" class="article-tag-list-link color3">计划</a>
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -275,7 +330,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/022/09/15/%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/025/01/07/springCloudAlibaba%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,18 +344,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/03/07/Linux%E9%9A%8F%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Linux随记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/05/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MarkDown文件编写规则</div>
+    <a href="/2024/12/10/javaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javaWeb学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -327,7 +373,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">C++算法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86"><span class="toc-number">1.3.</span> <span class="toc-text">服务拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC"><span class="toc-number">1.4.</span> <span class="toc-text">RPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">服务治理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">Nacos-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C"><span class="toc-number">2.2.</span> <span class="toc-text">Nacos-服务注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">Nacos-服务发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.4.</span> <span class="toc-text">OpenFeign-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E5%BC%80%E5%90%AF%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%94%AF%E6%8C%81"><span class="toc-number">2.5.</span> <span class="toc-text">OpenFeign-开启连接池支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.6.</span> <span class="toc-text">OpenFeign-最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA"><span class="toc-number">2.7.</span> <span class="toc-text">OpenFeign-日志输出</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
