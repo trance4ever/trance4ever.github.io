@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>springCloudAlibaba学习笔记 | Hexo</title>
+  <title>springCloud学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录springCloudAlibaba微服务学习的过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springCloudAlibaba学习笔记">
-<meta property="og:url" content="http://example.com/2025/01/07/springCloudAlibaba%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="springCloud学习笔记">
+<meta property="og:url" content="http://example.com/2025/01/07/springCloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="记录springCloudAlibaba微服务学习的过程。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-07T02:16:17.000Z">
-<meta property="article:modified_time" content="2025-01-08T08:56:14.597Z">
+<meta property="article:modified_time" content="2025-01-09T07:36:52.546Z">
 <meta property="article:author" content="Trance4ever">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -167,19 +167,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-springCloudAlibaba学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-springCloud学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      springCloudAlibaba学习笔记
+      springCloud学习笔记
     </h1>
   
   
         
-        <a href="/2025/01/07/springCloudAlibaba%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+        <a href="/2025/01/07/springCloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
   	<time datetime="2025-01-07T02:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-07</time>
 </a>
         
@@ -199,7 +199,7 @@
 <li>微服务适合互联网公司迅捷开发，粒度更精细</li>
 </ul>
 <p>由于微服务架构的上述特性，其可以承载超高并发量，适合成本高，用户量大的网站。   </p>
-<h2 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h2><p>下面列举常用注解：<br><code>@EnableFeignClients</code>：启用<code>OpenFeign</code>功能。<br><code>@FeignClient(value = &quot;微服务名称&quot;)</code>：在接口上方加上该注解，完成<code>http</code>请求的自动发送。   </p>
+<h2 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h2><p>下面列举常用注解：<br><code>@EnableFeignClients</code>：启用<code>OpenFeign</code>功能。<br><code>@FeignClient(value = &quot;微服务名称&quot;)</code>：在接口上方加上该注解，完成<code>http</code>请求的自动发送。<br><code>@ConfigurationProperties(prefix = &quot;xxx&quot;)</code>：将外部配置属性（配置文件&#x2F;<code>nacos</code>配置）注入到<code>java</code>对象中。<br><code>@GlobalTransactional</code>：标记分布式事务的入口方法  </p>
 <h2 id="服务拆分"><a href="#服务拆分" class="headerlink" title="服务拆分"></a>服务拆分</h2><p>可以利用<code>maven</code>进行拆分，每一个功能拆分为一个模块，整体作为一个聚合项目。   </p>
 <h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><p>当服务拆分后，不同模块之间通过远程调用，进行数据的交互。<br>由此为了保证服务的运行，需要进行模块间远程调用。<br><code>Spring</code>提供了<code>RestTemplate</code>工具，可以方便的实现<code>http</code>请求的发送，使用步骤为：   </p>
 <ul>
@@ -222,6 +222,15 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> DiscoveryClient discoveryClient;</span><br><span class="line"><span class="comment">// 获取服务实例列表</span></span><br><span class="line">List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(<span class="string">&quot;服务名称&quot;</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
+<h2 id="Nacos-添加配置"><a href="#Nacos-添加配置" class="headerlink" title="Nacos-添加配置"></a>Nacos-添加配置</h2><p>在<code>Nacos</code>的控制台可以添加配置，完成配置信息的统一管理。<br>编写<code>bootstrap.yml</code>配置文件，可以使应用启动时，先读取<code>springcloud</code>的上下文信息，完成拉去<code>Nacos</code>的配置信息。<br>初次之外，还需要引入<code>spring-cloud-starter-alibaba-nacos-config</code>和<code>spring-cloud-starter-bootstrap</code>依赖。    </p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bootstrap.yml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cart-service</span> <span class="comment"># 服务名称</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span> <span class="comment"># nacos地址</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment"># 文件后缀名</span></span><br><span class="line">        <span class="attr">shared-configs:</span> <span class="comment"># 共享配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-jdbc.yaml</span> <span class="comment"># 共享mybatis配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-log.yaml</span> <span class="comment"># 共享日志配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-swagger.yaml</span> <span class="comment"># 共享日志配置</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Nacos-配置热更新"><a href="#Nacos-配置热更新" class="headerlink" title="Nacos-配置热更新"></a>Nacos-配置热更新</h2><p><strong>配置热更新：</strong>当修改配置文件中的配置时，微服务<strong>无需重启</strong>即可使配置生效。<br>前提条件：     </p>
+<ul>
+<li><code>nacos</code>需要有与微服务名有关的配置文件</li>
+<li>并且微服务要以特定方式读取需要热更新的配置文件：<code>@ConfigurationProperties(prefix = &quot;xxx&quot;)</code></li>
+</ul>
+<p>文件的<code>dataId</code>格式：<code>[服务名]-[spring.active.profile].[后缀名]</code>。    </p>
 <h2 id="OpenFeign-简介"><a href="#OpenFeign-简介" class="headerlink" title="OpenFeign-简介"></a>OpenFeign-简介</h2><p><code>OpenFeign</code>是一个声明式的<code>http</code>客户端，可以简化<code>http</code>请求发送的过程。<br><code>OpenFeign</code>已经被<code>springCloud</code>自动装配，所以想要使用该组件，只需要如下步骤：   </p>
 <ul>
 <li>引入依赖，包括<code>OpenFeign</code>和负载均衡组件<code>SpringCLoudLoadBalancer</code>    </li>
@@ -246,6 +255,64 @@
 <li>FULL：记录所有请求和响应的明细，包括头信息、请求体、元数据</li>
 </ul>
 <p>Feign默认的日志级别就是NONE，所以默认我们看不到请求日志。<br>接下来，要让日志级别生效，还需要配置这个类。有两种方式：<br>局部生效：在某个<code>FeignClient</code>中配置，只对当前<code>FeignClient</code>生效：<code>@FeignClient(value = &quot;item-service&quot;, configuration = DefaultFeignConfig.class)</code>。<br>全局生效：在<code>@EnableFeignClients</code>中配置，针对所有<code>FeignClient</code>生效：<code>@EnableFeignClients(defaultConfiguration = DefaultFeignConfig.class)</code>。   </p>
+<h2 id="SpringCloudGateWay"><a href="#SpringCloudGateWay" class="headerlink" title="SpringCloudGateWay"></a>SpringCloudGateWay</h2><p><code>SpringCloudGateWay</code>是<code>springcloud</code>中承担网关角色的组件，提供路由服务。<br>添加<code>SpringCloudGateWay</code>的依赖后，编写配置文件定义端口转发规则，示例如下：   </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span><span class="string">:8848</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">item</span> <span class="comment"># 路由规则id，自定义，唯一</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://item-service</span> <span class="comment"># 路由的目标服务，lb代表负载均衡，会从注册中心拉取服务列表</span></span><br><span class="line">          <span class="attr">predicates:</span> <span class="comment"># 路由断言，判断当前请求是否符合当前规则，符合则路由到目标服务</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/items/**,/search/**</span> <span class="comment"># 这里是以请求路径作为判断规则</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">cart</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cart-service</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/carts/**</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">user</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://user-service</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/users/**,/addresses/**</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">trade</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://trade-service</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/orders/**</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">pay</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://pay-service</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/pay-orders/**</span></span><br></pre></td></tr></table></figure>
+<p>除此以外，<code>SpringCloudGateWay</code>还提供了路由断言和过滤功能，感兴趣可以自行了解。    </p>
+<h2 id="SpringCloudGateWay-全局过滤器"><a href="#SpringCloudGateWay-全局过滤器" class="headerlink" title="SpringCloudGateWay-全局过滤器"></a>SpringCloudGateWay-全局过滤器</h2><p>想要在网关转发之前做登陆校验，需要自定义过滤器。<br>网关过滤器有两种，分别是：<br><code>GatewayFilter</code>：路由过滤器，作用范围比较灵活，可以是任意指定的路由Route。<br><code>GlobalFilter</code>：全局过滤器，作用范围是所有路由，不可配置。<br>两种过滤器的过滤方法签名完全一致。<br>自定义过滤器还需要继承<code>Order</code>接口，定义优先级，保证期在端口转发过滤器前执行。   </p>
+<h2 id="SpringCloudGateWay-登陆校验"><a href="#SpringCloudGateWay-登陆校验" class="headerlink" title="SpringCloudGateWay-登陆校验"></a>SpringCloudGateWay-登陆校验</h2><p>实现微服务的登陆校验功能，请求流程如下安排：    </p>
+<ul>
+<li>使用<code>SpringCloudGateWay</code>，定义一个全局拦截器，在其中完成登陆校验，并将用户信息转发到到微服务公共模块中    </li>
+<li>微服务公共模块只定义一个拦截器，作用是将用户信息保存到<code>ThreadLocal</code>中，并放行请求    </li>
+<li>微服务模块之间通信时，使用<code>OpenFeign</code>的拦截器，拦截器完成从公共模块中拿到用户信息，并转发的流程</li>
+</ul>
+<h2 id="Sentinel-简介"><a href="#Sentinel-简介" class="headerlink" title="Sentinel-简介"></a>Sentinel-简介</h2><p><code>Sentinel</code>是一款微服务流量控制组件，具有服务保护功能，监控簇点链路，即<code>http</code>访问路径。<br>微服务保护的方案有很多，比如：    </p>
+<ul>
+<li>请求限流：设置<code>QPS</code>上限  </li>
+<li>线程隔离：设置线程上限  </li>
+<li>服务熔断</li>
+</ul>
+<p>服务想要使用<code>Sentinel</code>，需要如下步骤：   </p>
+<ul>
+<li>引入<code>spring-cloud-starter-alibaba-sentinel</code>依赖    </li>
+<li>配置控制台：修改<code>application.yaml</code>文件</li>
+</ul>
+<p>配置文件示例：   </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">sentinel:</span></span><br><span class="line">      <span class="attr">transport:</span></span><br><span class="line">        <span class="attr">dashboard:</span> <span class="string">localhost:8090</span></span><br><span class="line">      <span class="attr">http-method-specify:</span> <span class="literal">true</span> <span class="comment"># 开启请求方式前缀</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Seata-简介"><a href="#Seata-简介" class="headerlink" title="Seata-简介"></a>Seata-简介</h2><p>在分布式系统中，如果一个业务需要多个服务合作完成，而且每一个服务都有事务，多个事务必须同时成功或失败，这样的事务就是<strong>分布式事务</strong>。<br>其中的每个服务就是一个<strong>分支事务</strong>，整个事务成为<strong>全局事务</strong>。<br><code>Seata</code>是分布式事务的解决方案。    </p>
+<h2 id="Seata-解决思路"><a href="#Seata-解决思路" class="headerlink" title="Seata-解决思路"></a>Seata-解决思路</h2><p>其实分布式事务产生的一个重要原因，就是参与事务的多个分支事务互相无感知，不知道彼此的执行状态。因此解决分布式事务的思想非常简单：<br>就是找一个统一的事务协调者，与多个分支事务通信，检测每个分支事务的执行状态，保证全局事务下的每一个分支事务同时成功或失败即可。<br>大多数的分布式事务框架都是基于这个理论来实现的。<br>Seata也不例外，在Seata的事务管理中有三个重要的角色：<br><code>TC (Transaction Coordinator)</code>：事务协调者：维护全局和分支事务的状态，协调全局事务提交或回滚。<br><code>TM (Transaction Manager)</code>：事务管理器：定义全局事务的范围、开始全局事务、提交或回滚全局事务。<br><code>RM (Resource Manager)</code>： 资源管理器：管理分支事务，与TC交谈以注册分支事务和报告分支事务的状态，并驱动分支事务提交或回滚。   </p>
+<h2 id="Seata-项目引入"><a href="#Seata-项目引入" class="headerlink" title="Seata-项目引入"></a>Seata-项目引入</h2><p>需要做如下目录：    </p>
+<ul>
+<li>引入<code>spring-cloud-starter-alibaba-seat</code>依赖，因为我们希望在<code>nacos</code>中配置<code>Seata</code>，所以还需要引入<code>nacos</code>依赖    </li>
+<li>改造配置：在<code>nacos</code>中添加配置</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">trade-service</span> <span class="comment"># 服务名称</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span> <span class="comment"># nacos地址</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment"># 文件后缀名</span></span><br><span class="line">        <span class="attr">shared-configs:</span> <span class="comment"># 共享配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-jdbc.yaml</span> <span class="comment"># 共享mybatis配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-log.yaml</span> <span class="comment"># 共享日志配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-swagger.yaml</span> <span class="comment"># 共享日志配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-seata.yaml</span> <span class="comment"># 共享seata配置</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Seata-XA模式"><a href="#Seata-XA模式" class="headerlink" title="Seata-XA模式"></a>Seata-XA模式</h2><p><code>XA</code>规范 是<code>X/Open</code>组织定义的分布式事务处理标准，<code>XA</code>规范描述了全局的<code>TM</code>与局部的<code>RM</code>之间的接口，几乎所有主流的数据库都对<code>XA</code>规范提供了支持。<br><code>XA</code>规范采用二阶段提交的模式。<br>一阶段：  </p>
+<ul>
+<li>事务协调者通知每个事务参与者执行本地事务  </li>
+<li>本地事务执行完成后报告事务执行状态给事务协调者，此时事务不提交，继续持有数据库锁</li>
+</ul>
+<p>二阶段：  </p>
+<ul>
+<li>事务协调者基于一阶段的报告来判断下一步操作  </li>
+<li>如果一阶段都成功，则通知所有事务参与者，提交事务  </li>
+<li>如果一阶段任意一个参与者失败，则通知所有事务参与者回滚事务</li>
+</ul>
+<p>实现<code>XA</code>模式：   </p>
+<ul>
+<li>我们要在配置文件中指定要采用的分布式事务模式。我们可以在Nacos中的共享shared-seata.yaml配置文件中设置      </li>
+<li>利用<code>@GlobalTransactional</code>标记分布式事务的入口方法</li>
+</ul>
+<h2 id="Seata-AT模式"><a href="#Seata-AT模式" class="headerlink" title="Seata-AT模式"></a>Seata-AT模式</h2><p><code>AT</code>模式同样是分阶段提交的事务模型，不过缺弥补了<code>XA</code>模型中资源锁定周期过长的缺陷。    </p>
+<p>阶段一RM的工作：  </p>
+<ul>
+<li>注册分支事务   </li>
+<li>记录undo-log（数据快照） </li>
+<li>执行业务sql并提交    </li>
+<li>报告事务状态</li>
+</ul>
+<p>阶段二提交时RM的工作：删除undo-log即可。<br>阶段二回滚时RM的工作：根据undo-log恢复数据到更新前。   </p>
 
           
         
@@ -330,7 +397,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/025/01/07/springCloudAlibaba%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://trance4ever.github.io/025/01/07/springCloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -373,7 +440,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86"><span class="toc-number">1.3.</span> <span class="toc-text">服务拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC"><span class="toc-number">1.4.</span> <span class="toc-text">RPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">服务治理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">Nacos-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C"><span class="toc-number">2.2.</span> <span class="toc-text">Nacos-服务注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">Nacos-服务发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.4.</span> <span class="toc-text">OpenFeign-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E5%BC%80%E5%90%AF%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%94%AF%E6%8C%81"><span class="toc-number">2.5.</span> <span class="toc-text">OpenFeign-开启连接池支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.6.</span> <span class="toc-text">OpenFeign-最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA"><span class="toc-number">2.7.</span> <span class="toc-text">OpenFeign-日志输出</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86"><span class="toc-number">1.3.</span> <span class="toc-text">服务拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC"><span class="toc-number">1.4.</span> <span class="toc-text">RPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">服务治理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">Nacos-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C"><span class="toc-number">2.2.</span> <span class="toc-text">Nacos-服务注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">Nacos-服务发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">Nacos-添加配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos-%E9%85%8D%E7%BD%AE%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">2.5.</span> <span class="toc-text">Nacos-配置热更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.6.</span> <span class="toc-text">OpenFeign-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E5%BC%80%E5%90%AF%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%94%AF%E6%8C%81"><span class="toc-number">2.7.</span> <span class="toc-text">OpenFeign-开启连接池支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.8.</span> <span class="toc-text">OpenFeign-最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenFeign-%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA"><span class="toc-number">2.9.</span> <span class="toc-text">OpenFeign-日志输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloudGateWay"><span class="toc-number">2.10.</span> <span class="toc-text">SpringCloudGateWay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloudGateWay-%E5%85%A8%E5%B1%80%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">2.11.</span> <span class="toc-text">SpringCloudGateWay-全局过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloudGateWay-%E7%99%BB%E9%99%86%E6%A0%A1%E9%AA%8C"><span class="toc-number">2.12.</span> <span class="toc-text">SpringCloudGateWay-登陆校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sentinel-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.13.</span> <span class="toc-text">Sentinel-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seata-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.14.</span> <span class="toc-text">Seata-简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seata-%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-number">2.15.</span> <span class="toc-text">Seata-解决思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seata-%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5"><span class="toc-number">2.16.</span> <span class="toc-text">Seata-项目引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seata-XA%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.17.</span> <span class="toc-text">Seata-XA模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seata-AT%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.18.</span> <span class="toc-text">Seata-AT模式</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
